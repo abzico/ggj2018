@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<wxs src="../../utils/wxs/ltsx/ltsx.wxs" module="ltsx" />
+<wxs src="../../utils/wxs/ltsx/const-lang.wxs" module="langs" />
+<view>
+  <canvas 
+    canvas-id="myCanvas" 
+    class="canvas-section" 
+    style="width: {{canvasSize.width}}px; height: {{canvasSize.height}}px;"
+    bindtouchend='onTouchendCanvas'
+    ></canvas>
+    <label>{{ ltsx.get(langs.English, 'index.js', 'button_ok_label_example') }}</label>
+</view>
