@@ -5,7 +5,7 @@ module.exports = {
   version: '0.0.1', // version number for heatap
   userInfoUpdateExpiredDuration: 7889238000,  // in millisecond (3 months = 7889238000 millsecond)
 
-  userToken: "<your end-point url here>",
+  endPoint: "<your end-point url here>",
   
   dataKey: {
     userToken: 'userToken',

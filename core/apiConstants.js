@@ -17,6 +17,6 @@ module.exports = {
     unknownError: 9999
   },
   headerKey: {
-    userToken: "<your token name here>"<your token name here>"
+    userToken: "<your token name here>"
   }
 }
