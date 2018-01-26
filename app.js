@@ -1,39 +1,37 @@
+const permTokenFlow = require('flow/perm-token.js');
+const api = require('core/api.js')
+
 //app.js
 App({
   onLaunch: function () {
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+    // ask this here so user can go to the app from any possible way, it will ask for such permision and try to get access token
+    // ask user for allowing permission, and try to get access token (thus login in the process)
+    var that = this;
+    permTokenFlow.askToAuthorizeNecessaryScopes()
+      .then(() => {
+        console.log('user allowed all permissions');
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
+        // try to get access token
+        api.syncTokenAndUserInfo()
+          .then(function() {
+            // update user info (if not yet)
+            permTokenFlow.updateUserInfoToServerIfNeeded();
           })
-        }
-      }
-    })
+          .catch(function(err) {
+            console.log(err);
+          });
+
+      }, () => {
+        console.log('error from asking permissions from user.');
+      })
 
     // get system info and save it to global data
     var res = wx.getSystemInfoSync();
     this.globalData.systemInfo = res;
   },
+
+  // global data maintained at app-level
   globalData: {
-    userInfo: null,
     systemInfo: null,
   }
 })
