@@ -1,5 +1,6 @@
 /**index.wxss**/
 .ui-section {
   background-color: blue;
-  height: 40vh;
+  margin-top: 2px;
+  display: flex;
 }

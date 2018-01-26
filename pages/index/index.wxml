@@ -7,8 +7,8 @@
     class="canvas-section" 
     style="width: {{canvasSize.width}}px; height: {{canvasSize.height}}px;"
     bindtouchend='onTouchendCanvas'
-    ></canvas>
-  <view class="ui-section">
+  ></canvas>
+  <view class="ui-section" style="height: {{ui_height}}px">
     <label>{{ ltsx.get(langs.English, 'index.js', 'button_ok_label_example') }}</label>
   </view>
 </view>

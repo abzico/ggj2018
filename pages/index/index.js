@@ -7,6 +7,9 @@ var mainCall = require('../../utils/promise-syncloop.js');
 const api = require('../../core/api.js');
 const globalData = require('../../utils/globalData.js');
 const userpref = require('../../user/userpref.js');
+// (note: this is how to import es6 with require)
+const Tilemap = new require('../../tilemap/tilemap.js').default;
+var tilemap = null;
 
 var rectPos = {
   x: 0,
@@ -19,24 +22,28 @@ Page({
   data: {
     canvasSize: {
       width: app.globalData.systemInfo.windowWidth,
-      height: app.globalData.systemInfo.windowHeight * 0.60
+      height: app.globalData.systemInfo.windowWidth
     },
+    ui_height: app.globalData.systemInfo.windowHeight - app.globalData.systemInfo.windowWidth
   },
 
   // all stuff to draw should be in here
   triggerRender: function() {
-    cutil.drawRect(rectPos.x, rectPos.y, rectSize, rectSize)
-    cutil.flush()
+    tilemap.drawToCanvas(cutil.ctx);
+    cutil.flush();
   },
 
   onLoad: function () {
-    console.log(app.globalData.systemInfo);
+    cutil = new CanvasUtil('myCanvas', this)
+
+    // create tilemap
+    tilemap = new Tilemap(10,10,20,20);
+    console.log(app.globalData);
+    // scale tilemap
+    tilemap.scale(this.data.canvasSize.width, this.data.canvasSize.height);
   },
 
   onReady: function() {
-    cutil = new CanvasUtil('myCanvas', this)
-    console.log(cutil.isAvailable())
-
     // set position to rect
     rectPos.x = this.data.canvasSize.width - rectSize;
     rectPos.y = 0;
