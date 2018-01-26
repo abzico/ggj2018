@@ -5,7 +5,7 @@
  * This will offload a need for user code to manage counting such retry count; which might be difficult.
  */
 
-var config = require('/core/config.js');
+var config = require('../core/config.js');
 
 var retry = {
 

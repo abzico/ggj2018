@@ -5,11 +5,11 @@
  */
 
 // API
-require('/utils/promise-retry.js');
+require('../utils/promise-retry.js');
 var constants = require('./apiConstants.js');
 var config = require('./config.js');
-var localstorage = require('/utils/localstorage.js');
-var globalData = require('/utils/globalData.js');
+var localstorage = require('../utils/localstorage.js');
+var globalData = require('../utils/globalData.js');
 
 // required: globalData (object from globalData.js)
 // usually will be included as require('api.js')(getApp().globalData) as globalData should be set in app.js

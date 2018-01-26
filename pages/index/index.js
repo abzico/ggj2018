@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const config = require('../../core/config.js');
 const CanvasUtil = require('../../utils/canvasUtil.js');
 
 var rectPos = {
@@ -42,7 +43,7 @@ Page({
     // test websocket
     console.log("Connecting websocket");
     wx.connectSocket({
-      url: "wss://apps.abzi.co/ggj2018-ws/",
+      url: config.endPointWS,
       success: function () {
         console.log('connected successfully');
       }
