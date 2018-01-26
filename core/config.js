@@ -6,6 +6,7 @@ module.exports = {
   userInfoUpdateExpiredDuration: 7889238000,  // in millisecond (3 months = 7889238000 millsecond)
 
   endPoint: "<your end-point url here>",
+  endPointWS: "<your websocket end-point url here>",
   
   dataKey: {
     userToken: 'userToken',
