@@ -14,7 +14,7 @@ export default class Tile {
     if (!this.visible)
       return
     
-    ctx.fillStyle = this.color
+    ctx.setFillStyle(this.color);
     ctx.fillRect(this.x + this.tileGap, this.y + this.tileGap, this.width - this.tileGap, this.height - this.tileGap)
     ctx.restore();
   }

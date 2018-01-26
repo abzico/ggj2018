@@ -1,3 +1,5 @@
+/* provide wrapper code to manage flow */
+
 const config = require('../core/config.js');
 const mainCall = require('../utils/promise-syncloop.js');
 const api = require('../core/api.js');

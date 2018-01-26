@@ -38,7 +38,8 @@ Page({
 
     // create tilemap
     tilemap = new Tilemap(10,10,20,20);
-    console.log(app.globalData);
+    tilemap.bgColor = '#b7d2ff';
+
     // scale tilemap
     tilemap.scale(this.data.canvasSize.width, this.data.canvasSize.height);
   },
