@@ -9,6 +9,29 @@
     bindtouchend='onTouchendCanvas'
   ></canvas>
   <view class="ui-section" style="height: {{ui_height}}px">
-    <label>{{ ltsx.get(langs.English, 'index.js', 'button_ok_label_example') }}</label>
+    <view class="left-ui-wrapper" style="width: 50%">
+      <view style="height: {{leftIndividualUIHeight}}px;" class="left-1st-row">
+        <button type="default" plain="true" bindtap="onClickUpButton">Up</button>
+      </view>
+      <view style="height: {{leftIndividualUIHeight}}px;" class="left-2nd-row">
+        <view style="width:50%; display: inline-block">
+          <button type="default" plain="true" bindtap="onClickLeftButton">Left</button>
+        </view>
+        <view style="width:50%; display: inline-block">
+          <button type="default" plain="true" bindtap="onClickRightButton">Right</button>
+        </view>
+      </view>
+      <view style="height: {{leftIndividualUIHeight}}px;" class="left-3rd-row">
+        <button type="default" plain="true" bindtap="onClickDownButton">Down</button>
+      </view>
+    </view>
+    <view class="right-ui-wrapper" style="width: 50%">
+      <view style="height: 50%" class="right-1st-row">
+        <button type="default" plain="true" bindtap="onClickFireButton">Fire</button>
+      </view>
+      <view style="height: 50%;" class="right-2nd-row">
+        <button type="default" plain="true" bindtap="onClickScanButton">Scan</button>
+      </view>
+      </view>
   </view>
 </view>

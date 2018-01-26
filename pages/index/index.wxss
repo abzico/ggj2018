@@ -4,3 +4,33 @@
   margin-top: 2px;
   display: flex;
 }
+.left-ui-wrapper {
+}
+.left-1st-row {
+}
+.left-1st-row button {
+  width: 100%;
+  height: 100%;
+}
+.left-2nd-row {
+}
+.left-2nd-row button {
+  width: 100%;
+  height: 100%;
+}
+.left-3rd-row {
+}
+.right-ui-wrapper {
+}
+.right-1st-row {
+}
+.right-1st-row button {
+  width: 100%;
+  height: 100%;
+}
+.right-2nd-row {
+}
+.right-2nd-row button {
+  width: 100%;
+  height: 100%;
+}

@@ -24,7 +24,8 @@ Page({
       width: app.globalData.systemInfo.windowWidth,
       height: app.globalData.systemInfo.windowWidth
     },
-    ui_height: app.globalData.systemInfo.windowHeight - app.globalData.systemInfo.windowWidth
+    ui_height: app.globalData.systemInfo.windowHeight - app.globalData.systemInfo.windowWidth,
+    leftIndividualUIHeight: (app.globalData.systemInfo.windowHeight - app.globalData.systemInfo.windowWidth) / 3.0
   },
 
   // all stuff to draw should be in here
@@ -96,5 +97,24 @@ Page({
         this.triggerRender();
       }
     }
+  },
+
+  onClickUpButton: function(e) {
+    console.log('clicked on up button');
+  },
+  onClickLeftButton: function(e) {
+    console.log('clicked on left button');
+  },
+  onClickRightButton: function(e) {
+    console.log('clicked on right button');
+  },
+  onClickDownButton: function(e) {
+    console.log('clicked on down button');
+  },
+  onClickFireButton: function(e) {
+    console.log('clicked on fire button');
+  },
+  onClickScanButton: function(e) {
+    console.log('clicked on scan button');
   }
 })
