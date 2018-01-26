@@ -1,2 +1,5 @@
 # in case user just leave it here
 node_modules/
+
+# local scripts
+_scripts/
