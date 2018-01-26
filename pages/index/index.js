@@ -13,8 +13,8 @@ var cutil = null;
 Page({
   data: {
     canvasSize: {
-      width: 0,
-      height: 0
+      width: app.globalData.systemInfo.windowWidth,
+      height: app.globalData.systemInfo.windowHeight * 0.60
     },
   },
   // all stuff to draw should be in here
@@ -23,11 +23,7 @@ Page({
     cutil.flush()
   },
   onLoad: function () {
-    var res = wx.getSystemInfoSync()
-
-    this.data.canvasSize.width = res.windowWidth
-    this.data.canvasSize.height = res.windowHeight
-    this.setData(this.data);
+    console.log(app.globalData.systemInfo);
   },
   onReady: function() {
     cutil = new CanvasUtil('myCanvas', this)
@@ -37,16 +33,22 @@ Page({
     rectPos.x = this.data.canvasSize.width - rectSize;
     rectPos.y = 0;
 
+    this.setupWebsocket();
+
+    // trigger render initially
+    this.triggerRender();
+  },
+  setupWebsocket: function() {
     // test websocket
     console.log("Connecting websocket");
     wx.connectSocket({
-      url: "wss://apps.abzi.co/ggj2018/",
-      success: function() {
+      url: "wss://apps.abzi.co/ggj2018-ws/",
+      success: function () {
         console.log('connected successfully');
       }
     })
     // listen to open event
-    wx.onSocketOpen(function(res) {
+    wx.onSocketOpen(function (res) {
       console.log('websocket opened');
 
       wx.sendSocketMessage({
@@ -54,17 +56,15 @@ Page({
       })
     });
     // listen to messag event
-    wx.onSocketMessage(function(res) {
+    wx.onSocketMessage(function (res) {
       console.log('received: ' + res.data);
     });
     // liten to close event
-    wx.onSocketClose(function(res) {
+    wx.onSocketClose(function (res) {
       console.log('socket closed');
     });
-
-    // trigger render initially
-    this.triggerRender();
   },
+  
   onTouchendCanvas: function(e) {
     if (e.changedTouches.length > 0) {
       var touch = e.changedTouches[0];

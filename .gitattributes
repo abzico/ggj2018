@@ -1,1 +1,3 @@
 project.config.json filter=hide
+core/apiConstants.js  filter=api_hide1
+core/config.js  filter=api_hide2
